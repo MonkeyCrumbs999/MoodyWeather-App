@@ -114,7 +114,9 @@ const WeatherApp = () => {
       <h1 className="text-2xl sm:text-4xl font-bold mb-8">Weather App</h1>
 
       {/* Weather section */}
-      <motion.div layout className="w-full flex flex-col items-center mb-5">
+      <motion.div
+        layout
+        className="w-full flex flex-col items-center mb-5 gap-4">
         <div className="w-full flex flex-col items-center mb-5">
           <motion.input
             type="text"
@@ -139,7 +141,7 @@ const WeatherApp = () => {
       {/* Mood section */}
       <motion.div
         layout
-        className="w-full flex flex-col items-center mt-5 gap-8">
+        className="w-full flex flex-col items-center mt-5 gap-4">
         <motion.input
           type="text"
           value={mood}
