@@ -123,7 +123,7 @@ const WeatherApp = () => {
             value={zip}
             onChange={(e) => setZip(e.target.value)}
             placeholder="Enter zip code"
-            className="mb-2 sm:mb-0 sm:mr-2 p-2 border rounded w-full"
+            className="mb-2 sm:mb-0 p-2 border rounded w-full"
             variants={itemVariants}
           />
           <motion.button
@@ -147,7 +147,7 @@ const WeatherApp = () => {
           value={mood}
           onChange={(e) => setMood(e.target.value)}
           placeholder="Enter mood"
-          className="mb-2 sm:mb-0 sm:mr-2 p-2 border rounded w-full"
+          className="mb-2 sm:mb-0 p-2 border rounded w-full"
           variants={itemVariants}
         />
         <motion.button
