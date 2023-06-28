@@ -54,7 +54,7 @@ const WeatherApp = () => {
     }
     // Fetch weather data from API
     fetch(
-      `http://api.weatherapi.com/v1/current.json?key=c5cc7b4f77664495961214741232706&q=${zip}`
+      `https://api.weatherapi.com/v1/current.json?key=c5cc7b4f77664495961214741232706&q=${zip}`
     )
       .then((response) => {
         if (!response.ok) {
