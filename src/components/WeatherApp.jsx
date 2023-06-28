@@ -110,7 +110,7 @@ const WeatherApp = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible">
-      <h1 className="text-2xl sm:text-4xl font-bold mb-5">Weather App</h1>
+      <h1 className="text-2xl sm:text-4xl font-bold mb-8">Weather App</h1>
 
       {/* Weather section */}
       <motion.div layout className="w-full flex flex-col items-center mb-5">
