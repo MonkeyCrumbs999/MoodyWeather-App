@@ -81,7 +81,7 @@ const WeatherApp = () => {
     }
     const currentTemp = weatherData.current.temp_f;
     if (currentTemp >= moodTemp[0] && currentTemp <= moodTemp[1]) {
-      return "Your location matches your mood!";
+      return "Your location matches your mood! 😲";
     } else {
       return "Your location does not match your mood.";
     }
