@@ -21,7 +21,7 @@ const WeatherCard = ({ data }) => {
 
   return (
     <motion.div
-      className="rounded-lg shadow-lg p-10 bg-white mt-4 text-center"
+      className="rounded-lg shadow-lg p-10 bg-white mt-4 text-center dark:bg-gray-800 dark:text-white"
       variants={cardVariants}
       initial="hidden"
       animate={controls}>
