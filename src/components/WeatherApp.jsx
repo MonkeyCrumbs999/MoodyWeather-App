@@ -37,11 +37,12 @@ const WeatherApp = () => {
 
   // Function to set the mood
   const submitMood = () => {
-    if (!mood || !moodToTemp[mood]) {
+    const lowerCaseMood = mood.toLowerCase();
+    if (!lowerCaseMood || !moodToTemp[lowerCaseMood]) {
       setError("Please enter a valid mood.");
       return;
     }
-    setMoodTemp(moodToTemp[mood]);
+    setMoodTemp(moodToTemp[lowerCaseMood]);
     setError(null);
   };
 
