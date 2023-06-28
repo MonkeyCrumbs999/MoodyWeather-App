@@ -107,7 +107,7 @@ const WeatherApp = () => {
   return (
     // Container with variants for motion effects
     <motion.div
-      className="p-4 sm:p-10 flex flex-col items-center"
+      className="pl-4 pr-4 pb-4 sm:pl-10 sm:pr-10 sm:pb-10 flex flex-col items-center"
       variants={containerVariants}
       initial="hidden"
       animate="visible">
