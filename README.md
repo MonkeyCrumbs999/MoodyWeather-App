@@ -1,8 +1,8 @@
-# Weather Mood App
+# MoodyWeather-App
 
 ## Overview
 
-The Weather Mood App is a simple, intuitive application that correlates the user's mood with weather conditions. It allows users to input their current mood, and suggests a temperature range that corresponds to that mood. Additionally, users can input their zip code to fetch current weather data.
+The MoodyWeather app is a simple, intuitive application that correlates the user's mood with weather conditions. It allows users to input their current mood, and suggests a temperature range that corresponds to that mood. Additionally, users can input their zip code to fetch current weather data.
 
 This application is built with React and styled with TailwindCSS. Weather data is fetched using the WeatherAPI.com API, and UI animations are handled with Framer Motion.
 
@@ -27,5 +27,5 @@ To run this project locally, you will need to follow these steps:
 ### Clone the repository:
 
 ```bash
-git clone https://github.com/MonkeyCrumbs999/WeatherApp.git
+git clone https://github.com/MonkeyCrumbs999/MoodyWeather-App.git
 ```
