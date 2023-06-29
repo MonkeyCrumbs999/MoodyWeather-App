@@ -5,18 +5,20 @@ import WeatherCard from "./WeatherCard";
 const WeatherApp = () => {
   // State hooks
   const [zip, setZip] = useState("");
+  const [zipError, setZipError] = useState(null);
   const [mood, setMood] = useState("");
+  const [moodError, setMoodError] = useState(null);
   const [moodTemp, setMoodTemp] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
 
   // Function to reset the state
   const resetAll = () => {
     setZip("");
+    setZipError(null);
     setMood("");
+    setMoodError(null);
     setMoodTemp(null);
     setWeatherData(null);
-    setError(null);
   };
 
   // Framer motion controls and variants for mood
@@ -24,7 +26,6 @@ const WeatherApp = () => {
   const moodVariants = {
     hidden: { scale: 0 },
     visible: { scale: 1, transition: { duration: 0.5 } },
-    rotate: { rotate: 360, transition: { duration: 0.5 } },
   };
 
   // Mood to temperature map
@@ -39,39 +40,40 @@ const WeatherApp = () => {
   const submitMood = () => {
     const lowerCaseMood = mood.toLowerCase();
     if (!lowerCaseMood || !moodToTemp[lowerCaseMood]) {
-      setError("Please enter a valid mood.");
+      setMoodError("Please enter a valid mood.");
       return;
     }
     setMoodTemp(moodToTemp[lowerCaseMood]);
-    setError(null);
+    setMoodError(null);
   };
 
   // Function to fetch weather data
-  const fetchWeatherData = () => {
-    setError(null);
+  const fetchWeatherData = async () => {
+    setZipError(null);
     if (!zip) {
-      setError("Please enter a zip code.");
+      setZipError("Please enter a zip code.");
       return;
     }
     // Fetch weather data from API
-    fetch(
-      `https://api.weatherapi.com/v1/current.json?key=c5cc7b4f77664495961214741232706&q=${zip}`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not fetch weather data.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data || !data.current) {
-          throw new Error("No weather data available for this zip code.");
-        }
-        setWeatherData(data);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    try {
+      const response = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=c5cc7b4f77664495961214741232706&q=${zip}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Could not fetch weather data.");
+      }
+
+      const data = await response.json();
+
+      if (!data || !data.current) {
+        throw new Error("No weather data available for this zip code.");
+      }
+
+      setWeatherData(data);
+    } catch (error) {
+      setZipError(error.message);
+    }
   };
 
   // Function to check if mood matches the weather
@@ -100,7 +102,7 @@ const WeatherApp = () => {
   // useEffect to handle mood change
   useEffect(() => {
     if (moodTemp) {
-      moodControls.start("rotate").then(() => moodControls.start("visible"));
+      moodControls.start("visible");
     }
   }, [moodTemp, moodControls]);
 
@@ -133,8 +135,8 @@ const WeatherApp = () => {
             variants={itemVariants}>
             Get Weather
           </motion.button>
+          {zipError && <p className="text-red-500">{zipError}</p>}
         </div>
-        {error && <p className="text-red-500">{error}</p>}
         {weatherData && <WeatherCard data={weatherData} />}
       </motion.div>
 
@@ -157,6 +159,7 @@ const WeatherApp = () => {
           variants={itemVariants}>
           Submit Mood
         </motion.button>
+        {moodError && <p className="text-red-500">{moodError}</p>}
         {moodTemp && (
           <motion.p
             className="mt-2 sm:mt-0 w-full text-center"
