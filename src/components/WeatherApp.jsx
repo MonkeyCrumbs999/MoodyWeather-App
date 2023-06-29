@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import WeatherCard from "./WeatherCard";
+import CitySuggestions from "./CitySuggestions";
 
 const WeatherApp = () => {
   // State hooks
@@ -193,6 +194,9 @@ const WeatherApp = () => {
             {moodTemp[1]}°F.
           </motion.p>
         )}
+
+        <CitySuggestions moodTemp={moodTemp} />
+
         <p>{checkMood()}</p>
 
         {/* Reset Button */}
